@@ -1,7 +1,13 @@
+using CIDM3312_FinalProject.Models;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
+
+builder.Services.AddDbContext<ProjectDbContext>(options =>
+    options.UseSqlite(builder.Configuration.GetConnectionString("ProjectContext")));
 
 var app = builder.Build();
 
