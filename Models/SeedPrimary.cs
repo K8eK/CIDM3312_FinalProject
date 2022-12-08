@@ -9,12 +9,6 @@ namespace CIDM3312_FinalProject.Models
         {
             using (var PrimaryContext = new ProjectDbContext(serviceProvider.GetRequiredService<DbContextOptions<ProjectDbContext>>()))
             {
-  
-                //Look for existing Facility object
-                if (PrimaryContext.Facility.Any())
-                {
-                    return;  // DB has been seeded
-                }
 
                 //Seeding the Facility table
                 PrimaryContext.Facility.AddRange
