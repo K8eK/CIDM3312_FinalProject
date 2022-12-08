@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace CIDM3312_FinalProject.Models
 {
-    public static class SeedData
+    public static class SeedPrimary
     {
         public static void Initialize(IServiceProvider serviceProvider)
         {
