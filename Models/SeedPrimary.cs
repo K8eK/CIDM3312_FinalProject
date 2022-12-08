@@ -32,7 +32,6 @@ namespace CIDM3312_FinalProject.Models
                 //Seeding the CollectionLayers table
                 PrimaryContext.CollectionLayers.AddRange
                 (
-                    new CollectionLayer {CollectionCode = "", CollectionLabel = ""},
                     new CollectionLayer {CollectionCode = "FRM_AR", CollectionLabel = "Arkansas"},
                     new CollectionLayer {CollectionCode = "FRM_ASR", CollectionLabel = "TJC ASR"},
                     new CollectionLayer {CollectionCode = "FRM_AZ", CollectionLabel = "AZ EMS"},
