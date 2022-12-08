@@ -10,10 +10,14 @@ namespace CIDM3312_FinalProject.Models
         
         [Display(Name = "Facility Code")]
         [Required]
+        [MinLength(2)]
+        [MaxLength(7)]
         public string FacilityCode {get; set;} = string.Empty;
 
         [Display(Name = "Facility Name")]
         [Required]
+        [MinLength(5)]
+        [MaxLength(75)]
         public string FacilityName {get; set;} = string.Empty;
 
         [Required]
