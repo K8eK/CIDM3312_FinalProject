@@ -7,13 +7,9 @@ namespace CIDM3312_FinalProject.Models
     {
         public static void Initialize(IServiceProvider serviceProvider)
         {
-            using (var context = new ProjectDbContext(serviceProvider.GetRequiredService<DbContextOptions<ProjectDbContext>>()))
+            using (var PrimaryContext = new ProjectDbContext(serviceProvider.GetRequiredService<DbContextOptions<ProjectDbContext>>()))
             {
-                if (context.Facility.Any())
-                {
-                    return;
-                }
-
+  
                 List<Facility> SeedFacilities = new List<Facility>
                 {
                     new Facility {FacilityCode="BA", FacilityName="Swedish Ballard", GwtgFacilityId = 96580},
@@ -24,7 +20,7 @@ namespace CIDM3312_FinalProject.Models
                     new Facility {FacilityCode="MC", FacilityName="Swedish Mill Creek", GwtgFacilityId = 96581},
                     new Facility {FacilityCode="RD", FacilityName="Swedish Redmond", GwtgFacilityId = 96582}
                 };
-                context.AddRange(SeedFacilities);
+                PrimaryContext.AddRange(SeedFacilities);
 
                 List<CollectionLayer> SeedCollectionLayers = new List<CollectionLayer>
                 {
@@ -79,9 +75,9 @@ namespace CIDM3312_FinalProject.Models
                     new CollectionLayer {CollectionCode = "FRM_FUP_Outcome", CollectionLabel = "Stroke Follow-up: Short Form"},
                     new CollectionLayer {CollectionCode = "FRM_FUP_TSC", CollectionLabel = "Stroke Follow-up: TSC"}
                 };
-                context.AddRange(SeedCollectionLayers);
+                PrimaryContext.AddRange(SeedCollectionLayers);
 
-                context.SaveChanges();
+                PrimaryContext.SaveChanges();
             }
         }
     }

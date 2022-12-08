@@ -7,12 +7,8 @@ namespace CIDM3312_FinalProject.Models
     {
         public static void Initialize(IServiceProvider serviceProvider)
         {
-            using (var context = new ProjectDbContext(serviceProvider.GetRequiredService<DbContextOptions<ProjectDbContext>>()))
+            using (var BridgeContext = new ProjectDbContext(serviceProvider.GetRequiredService<DbContextOptions<ProjectDbContext>>()))
             {
-                if (context.FacilityCollection.Any())
-                {
-                    return;
-                }
                 
                List<FacilityCollection> SeedParticipation = new List<FacilityCollection>
                 {
@@ -90,9 +86,9 @@ namespace CIDM3312_FinalProject.Models
                     new FacilityCollection {FacilityId = 7, CollectionLayerId = 32},
                     new FacilityCollection {FacilityId = 7, CollectionLayerId = 37}
                 };
-                context.AddRange(SeedParticipation);
+                BridgeContext.AddRange(SeedParticipation);
 
-                context.SaveChanges();
+                BridgeContext.SaveChanges();
             }
         }
     }
