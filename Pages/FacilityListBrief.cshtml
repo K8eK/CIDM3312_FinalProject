@@ -1,6 +1,6 @@
 
 @page
-@model FacilityListModel
+@model FacilityListBriefModel
 @{
     ViewData["Title"] = "Onboarded Facilities";
 }
@@ -18,7 +18,7 @@
                 @Html.DisplayNameFor(model => model.Facility[0].FacilityCode)
             </th>
             <th>
-                GWTG Collection Layers
+                Layers Configured
             </th>
         </tr>
     </thead>
@@ -32,17 +32,10 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.FacilityCode) @*//straight pull from Facility*@
                 </td>
-                <td> @*//CYCLE THROUGH THE LINKED FacilityCollections table. If no layers assigned throw Not Configured to fill null*@
+                <td>
                     @foreach (var collectionlayer in item.FacilityCollections!)
                     {
-                        @collectionlayer.CollectionLayer.CollectionCode <br/>
                     }
-                    @if (item.FacilityCollections.Count == 0)
-                    {
-                        @:Not Configured
-                    }
-                </td>
-                <td>
                     @Html.DisplayFor(modelItem => item.FacilityCollections.Count)
                 </td>
             </tr>
