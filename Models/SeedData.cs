@@ -83,7 +83,6 @@ namespace CIDM3312_FinalProject.Models
 
                 SeedContext.FacilityCollections.AddRange
                 (
-                    new FacilityCollection {FacilityId = 0, CollectionLayerId = 0},
                     new FacilityCollection {FacilityId = 1, CollectionLayerId = 2},
                     new FacilityCollection {FacilityId = 1, CollectionLayerId = 4},
                     new FacilityCollection {FacilityId = 1, CollectionLayerId = 7},
