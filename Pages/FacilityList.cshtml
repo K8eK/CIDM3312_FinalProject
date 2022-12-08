@@ -18,9 +18,31 @@
                 @Html.DisplayNameFor(model => model.Facility[0].FacilityCode)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Facility[0].FacilityCollections)
+                GWTG Collection Layers
             </th>
         </tr>
     </thead>
-    
+    <tbody>
+        @foreach (var item in Model.Facility)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FacilityName) @*//straight pull from Facility*@
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FacilityCode) @*//straight pull from Facility*@
+                </td>
+                <td> @*//CYCLE THROUGH THE LINKED FacilityCollections table. If no layers assigned throw Not Configured to fill null*@
+                    @foreach (var collectionlayer in item.FacilityCollections!)
+                    {
+                        @collectionlayer.CollectionLayer.CollectionCode <br/>
+                    }
+                    @if (item.FacilityCollections.Count == 0)
+                    {
+                        @:Not Configured
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
 </table>
