@@ -11,13 +11,13 @@ namespace CIDM3312_FinalProject.Models
             {
   
                 //Look for existing Facility object
-                if (PrimaryContext.Facility.Any())
+                if (PrimaryContext.Facilities.Any())
                 {
                     return;  // DB has been seeded
                 }
 
                 //Seeding the Facility table
-                PrimaryContext.Facility.AddRange
+                PrimaryContext.Facilities.AddRange
                 (
                     new Facility {FacilityCode="BA", FacilityName="Swedish Ballard", GwtgFacilityId = 96580},
                     new Facility {FacilityCode="CH", FacilityName="Swedish Cherry Hill", GwtgFacilityId = 16002},
@@ -30,7 +30,7 @@ namespace CIDM3312_FinalProject.Models
                 PrimaryContext.SaveChanges();
 
                 //Seeding the CollectionLayers table
-                PrimaryContext.CollectionLayer.AddRange
+                PrimaryContext.CollectionLayers.AddRange
                 (
                     new CollectionLayer {CollectionCode = "", CollectionLabel = ""},
                     new CollectionLayer {CollectionCode = "FRM_AR", CollectionLabel = "Arkansas"},

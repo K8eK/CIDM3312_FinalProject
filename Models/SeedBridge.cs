@@ -10,12 +10,12 @@ namespace CIDM3312_FinalProject.Models
             using (var BridgeContext = new ProjectDbContext(serviceProvider.GetRequiredService<DbContextOptions<ProjectDbContext>>()))
             {
                 // Look for existing FacilityCollection
-                if (BridgeContext.FacilityCollection.Any())
+                if (BridgeContext.FacilityCollections.Any())
                 {
                     return; // Table has been seeded.
                 }
 
-                BridgeContext.FacilityCollection.AddRange
+                BridgeContext.FacilityCollections.AddRange
                 (
                     new FacilityCollection {FacilityId = 0, CollectionLayerId = 0},
                     new FacilityCollection {FacilityId = 1, CollectionLayerId = 2},
