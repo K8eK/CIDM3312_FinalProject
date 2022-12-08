@@ -1,10 +1,46 @@
 ﻿@page
 @model IndexModel
 @{
-    ViewData["Title"] = "Home page";
+    ViewData["Title"] = "Welcome page";
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 class="display-9">Welcome To The PSJH Stroke GWTG Information Center</h1>
+    <p>This is very much a work in progress so please keep the laughing to a minimum.  Thank you!</p>
+    </br>
+</div>
+
+<!-- This one row table is for my action buttons -->
+<div class="container">
+  <div class="row">
+    <div class="col-3">
+        <!-- Show Me button -->
+        <div class="btn-group">
+            <button type="button" class="btn btn-primary btn-lg dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Show Me A List Of </button>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Onboarded Facilities</a></li>
+                <li><a class="dropdown-item" href="#">GWTG Collection Layers</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="#">A Link To Nowhere</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="col-3">
+        <!-- Add New button -->
+        <div class="btn-group">
+            <button type="button" class="btn btn-success btn-lg dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Add A New  </button>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Facility</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="#">A Link To Nowhere</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="col-3">
+      Column
+    </div>
+    <div class="col-3">
+      Column
+    </div>
+  </div>
 </div>
