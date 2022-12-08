@@ -10,11 +10,11 @@ namespace CIDM3312_FinalProject.Models
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<FacilityCollection>().HasKey(s => new {s.FacilityId, s.CollectionLayerId});
+            modelBuilder.Entity<FacilityCollection>().HasKey(f => new {f.FacilityId, f.CollectionLayerId});
         }
         
-        public DbSet<Facility> Facility {get; set;} = default!;
-        public DbSet<CollectionLayer> CollectionLayer {get; set;} = default!;
-        public DbSet<FacilityCollection> FacilityCollection {get; set;} = default!;
+        public DbSet<Facility> Facilities {get; set;} = default!;
+        public DbSet<CollectionLayer> CollectionLayers {get; set;} = default!;
+        public DbSet<FacilityCollection> FacilityCollections {get; set;} = default!;
     }
 }

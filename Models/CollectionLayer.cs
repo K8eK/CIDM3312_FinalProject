@@ -16,9 +16,10 @@ namespace CIDM3312_FinalProject.Models
 
     public class FacilityCollection
     {
-        public int CollectionLayerId {get; set;} //PK,FK1 Composite
-        public int FacilityId {get; set;} //PK, FK2 Composite
-        public CollectionLayer CollectionLayer {get; set;} = default!; //Navigation to CollectionLayer
+        public int FacilityId {get; set;} //PK, FK1 Composite
+        public int CollectionLayerId {get; set;} //PK,FK2 Composite
         public Facility Facility {get; set;} = default!; //Navigation to Facility
+        public CollectionLayer CollectionLayer {get; set;} = default!; //Navigation to CollectionLayer
+        
     }
 }

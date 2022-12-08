@@ -14,8 +14,7 @@ var app = builder.Build();
 using (var scope = app.Services.CreateScope())
 {
     var services = scope.ServiceProvider;
-    SeedPrimary.Initialize(services);  //Seed the two content tables on each side of the 1-to-Many
-    SeedBridge.Initialize(services);   //Seed the bridge table in the middle on the many side of the 1-to-Many
+    SeedData.Initialize(services);  //Seed the two content tables on each side of the 1-to-Many
 }
 
 // Configure the HTTP request pipeline.
