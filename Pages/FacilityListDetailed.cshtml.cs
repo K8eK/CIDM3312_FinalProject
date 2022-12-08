@@ -10,11 +10,11 @@ using CIDM3312_FinalProject.Models;
 
 namespace CIDM3312_FinalProject.Pages;
 
-public class FacilityListModel : PageModel
+public class FacilityListDetailedModel : PageModel
 {
     private readonly ProjectDbContext _context;
     
-    public FacilityListModel(ProjectDbContext context)
+    public FacilityListDetailedModel(ProjectDbContext context)
     {
         _context = context;
     }

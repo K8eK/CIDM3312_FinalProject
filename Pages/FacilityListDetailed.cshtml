@@ -1,6 +1,6 @@
 
 @page
-@model FacilityListModel
+@model FacilityListDetailedModel
 @{
     ViewData["Title"] = "Onboarded Facilities";
 }
@@ -18,7 +18,7 @@
                 @Html.DisplayNameFor(model => model.Facility[0].FacilityCode)
             </th>
             <th>
-                GWTG Collection Layers
+                Collection Layer Details
             </th>
         </tr>
     </thead>
@@ -41,9 +41,6 @@
                     {
                         @:Not Configured
                     }
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.FacilityCollections.Count)
                 </td>
             </tr>
         }
