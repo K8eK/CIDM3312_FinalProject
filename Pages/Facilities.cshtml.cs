@@ -12,9 +12,9 @@ namespace CIDM3312_FinalProject.Pages;
 
 public class FacilitiesModel : PageModel
 {
-    private readonly Models.ProjectDbContext _context;
+    private readonly ProjectDbContext _context;
     
-    public FacilitiesModel(Models.ProjectDbContext context)
+    public FacilitiesModel(ProjectDbContext context)
     {
         _context = context;
     }
