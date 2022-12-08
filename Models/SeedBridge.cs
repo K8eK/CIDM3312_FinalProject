@@ -9,9 +9,14 @@ namespace CIDM3312_FinalProject.Models
         {
             using (var BridgeContext = new ProjectDbContext(serviceProvider.GetRequiredService<DbContextOptions<ProjectDbContext>>()))
             {
-                
-               List<FacilityCollection> SeedParticipation = new List<FacilityCollection>
+                // Look for existing FacilityCollection
+                if (BridgeContext.FacilityCollection.Any())
                 {
+                    return; // Table has been seeded.
+                }
+
+                BridgeContext.FacilityCollection.AddRange
+                (
                     new FacilityCollection {FacilityId = 0, CollectionLayerId = 0},
                     new FacilityCollection {FacilityId = 1, CollectionLayerId = 2},
                     new FacilityCollection {FacilityId = 1, CollectionLayerId = 4},
@@ -85,9 +90,7 @@ namespace CIDM3312_FinalProject.Models
                     new FacilityCollection {FacilityId = 7, CollectionLayerId = 28},
                     new FacilityCollection {FacilityId = 7, CollectionLayerId = 32},
                     new FacilityCollection {FacilityId = 7, CollectionLayerId = 37}
-                };
-                BridgeContext.AddRange(SeedParticipation);
-
+                );
                 BridgeContext.SaveChanges();
             }
         }

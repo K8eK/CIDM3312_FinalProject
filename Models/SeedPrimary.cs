@@ -10,8 +10,15 @@ namespace CIDM3312_FinalProject.Models
             using (var PrimaryContext = new ProjectDbContext(serviceProvider.GetRequiredService<DbContextOptions<ProjectDbContext>>()))
             {
   
-                List<Facility> SeedFacilities = new List<Facility>
+                //Look for existing Facility object
+                if (PrimaryContext.Facility.Any())
                 {
+                    return;  // DB has been seeded
+                }
+
+                //Seeding the Facility table
+                PrimaryContext.Facility.AddRange
+                (
                     new Facility {FacilityCode="BA", FacilityName="Swedish Ballard", GwtgFacilityId = 96580},
                     new Facility {FacilityCode="CH", FacilityName="Swedish Cherry Hill", GwtgFacilityId = 16002},
                     new Facility {FacilityCode="EDM", FacilityName="Swedish Edmonds", GwtgFacilityId = 16802},
@@ -19,11 +26,12 @@ namespace CIDM3312_FinalProject.Models
                     new Facility {FacilityCode="IQ", FacilityName="Swedish Issaquah", GwtgFacilityId = 75247},
                     new Facility {FacilityCode="MC", FacilityName="Swedish Mill Creek", GwtgFacilityId = 96581},
                     new Facility {FacilityCode="RD", FacilityName="Swedish Redmond", GwtgFacilityId = 96582}
-                };
-                PrimaryContext.AddRange(SeedFacilities);
+                );
+                PrimaryContext.SaveChanges();
 
-                List<CollectionLayer> SeedCollectionLayers = new List<CollectionLayer>
-                {
+                //Seeding the CollectionLayers table
+                PrimaryContext.CollectionLayer.AddRange
+                (
                     new CollectionLayer {CollectionCode = "", CollectionLabel = ""},
                     new CollectionLayer {CollectionCode = "FRM_AR", CollectionLabel = "Arkansas"},
                     new CollectionLayer {CollectionCode = "FRM_ASR", CollectionLabel = "TJC ASR"},
@@ -74,9 +82,7 @@ namespace CIDM3312_FinalProject.Models
                     new CollectionLayer {CollectionCode = "FRM_FUP_Historic", CollectionLabel = "Stroke Follow-up: Historic"},
                     new CollectionLayer {CollectionCode = "FRM_FUP_Outcome", CollectionLabel = "Stroke Follow-up: Short Form"},
                     new CollectionLayer {CollectionCode = "FRM_FUP_TSC", CollectionLabel = "Stroke Follow-up: TSC"}
-                };
-                PrimaryContext.AddRange(SeedCollectionLayers);
-
+                );
                 PrimaryContext.SaveChanges();
             }
         }
