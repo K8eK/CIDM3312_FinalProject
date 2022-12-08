@@ -13,8 +13,8 @@ namespace CIDM3312_FinalProject.Models
             modelBuilder.Entity<FacilityCollection>().HasKey(s => new {s.FacilityId, s.CollectionLayerId});
         }
         
-        public DbSet<Facility> Facilities {get; set;} = default!;
-        public DbSet<CollectionLayer> CollectionLayers {get; set;} = default!;
-        public DbSet<FacilityCollection> FacilityCollections {get; set;} = default!;
+        public DbSet<Facility> Facility {get; set;} = default!;
+        public DbSet<CollectionLayer> CollectionLayer {get; set;} = default!;
+        public DbSet<FacilityCollection> FacilityCollection {get; set;} = default!;
     }
 }
