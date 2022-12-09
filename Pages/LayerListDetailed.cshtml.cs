@@ -25,7 +25,7 @@ public class LayerListDetailedModel : PageModel
     {
         if (_context.CollectionLayers != null)
         {
-            CollectionLayer = await _context.CollectionLayers.Include(l => l.FacilityCollections!).ThenInclude(fc => fc.FacilityId).ToListAsync();
+            CollectionLayer = await _context.CollectionLayers.Include(cl => cl.FacilityCollections!).ThenInclude(fc => fc.FacilityId).ToListAsync();
         }
     }
 }
