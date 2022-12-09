@@ -29,35 +29,35 @@ public class LayerListBriefModel : PageModel
     public int PageNum {get; set;} = 1;
     public int PageSize {get; set;} = 10;
 
-
-        // Sorting support
-        [BindProperty(SupportsGet = true)]
-        public string CurrentSort {get; set;} = string.Empty;
-        // Second sorting technique with a SelectList
-        public SelectList SortList {get; set;} = default!;
+    // Sorting support
+    [BindProperty(SupportsGet = true)]
+    public string CurrentSort {get; set;} = string.Empty;
+    // Second sorting technique with a SelectList
 
     public async Task OnGetAsync()
     {
         if (_context.Facilities != null)
         {
             var query = _context.CollectionLayers.Select(cl => cl);
-                List<SelectListItem> sortItems = new List<SelectListItem> {
-                    new SelectListItem { Text = "Layer Label Ascending", Value = "ll_asc" },
-                    new SelectListItem { Text = "Layer Label Descending", Value = "ll_desc"}
-                };
-                SortList = new SelectList(sortItems, "Value", "Text", CurrentSort);
 
                 switch (CurrentSort)
                 {
-                    // If user selected "first_asc", modify query to sort by first name ascending order
-                    case "first_asc": 
-                        query = query.OrderBy(p => p.FirstName);
+                    // Modify query to sort by ascending order
+                    case "cl_asc": 
+                        query = query.OrderBy(cl => cl.CollectionLabel);
                         break;
-                    // If user selected "first_desc", modify query to sort by first name descending
-                    case "first_desc":
-                        query = query.OrderByDescending(p => p.FirstName);
+                    //Modify query to sort by descending order
+                    case "cl_desc":
+                        query = query.OrderByDescending(cl => cl.CollectionLabel);
                         break;
-                    // Add more sorting cases as needed
+                    // Modify query to sort by ascending order
+                    case "cc_asc":
+                        query = query.OrderBy(cl => cl.CollectionCode);
+                        break;
+                    //Modify query to sort by descending order
+                    case "cc_desc":
+                        query = query.OrderByDescending(cl => cl.CollectionCode);
+                        break;
                 }
 
             CollectionLayer = await query.Include(cl => cl.FacilityCollections!).ThenInclude(fc => fc.Facility).Skip((PageNum-1)*PageSize).Take(PageSize).ToListAsync();

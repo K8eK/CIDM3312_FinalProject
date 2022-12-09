@@ -30,7 +30,14 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.CollectionLayer[0].CollectionLabel)
+                @{// Alternate sort order
+                    var firstClSort = "cl_asc";
+                    if (Model.CurrentSort == "cl_asc")
+                    {
+                        firstClSort = "cl_desc";
+                    }
+                }    
+                <a asp-page="LayerListBrief" asp-route-CurrentSort="@firstClSort">@Html.DisplayNameFor(model => model.CollectionLayer[0].CollectionLabel)</a>
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.CollectionLayer[0].CollectionCode)
