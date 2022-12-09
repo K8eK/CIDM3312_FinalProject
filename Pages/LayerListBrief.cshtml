@@ -40,7 +40,14 @@
                 <a asp-page="LayerListBrief" asp-route-CurrentSort="@firstClSort">@Html.DisplayNameFor(model => model.CollectionLayer[0].CollectionLabel)</a>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.CollectionLayer[0].CollectionCode)
+                    @{// Alternate sort order
+                    var firstCcSort = "cc_asc";
+                    if (Model.CurrentSort == "cc_asc")
+                    {
+                        firstCcSort = "cc_desc";
+                    }
+                }    
+                <a asp-page="LayerListBrief" asp-route-CurrentSort="@firstCcSort">@Html.DisplayNameFor(model => model.CollectionLayer[0].CollectionCode)</a>
             </th>
             <th>
                 Facilities Configured
