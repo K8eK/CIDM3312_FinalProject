@@ -1,0 +1,47 @@
+
+@page
+@model LayerListBriefModel
+@{
+    ViewData["Title"] = "Collection Layer Usage";
+}
+<h1>@ViewData["Title"]</h1>
+
+<p>The Collection Layer usage for onboarded facilities.</p>
+<p></p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CollectionLayer[0].CollectionLabel)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CollectionLayer[0].CollectionCode)
+            </th>
+            <th>
+                Facilities Configured
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.CollectionLayer)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CollectionLabel) @*//straight pull from CollectionLayer*@
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CollectionCode) @*//straight pull from CollectionLayer*@
+                </td>
+                <td>
+                    @foreach (var facility in item.FacilityCollections!)
+                    {
+                    }
+                    @Html.DisplayFor(modelItem => item.FacilityCollections.Count)
+                </td>
+                <td>
+                    <a asp-page="LayerListDetailed">More Detail</a>  
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
