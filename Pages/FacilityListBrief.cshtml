@@ -40,7 +40,7 @@
                 </td>
                 <td>
                     <a asp-page="FacilityListDetailed">More Detail</a>  
-                    <a asp-page="EditKnownFacility">Edit</a>  
+                    <a asp-page="EditKnownFacility" asp-route-id="@item.FacilityId">Edit</a>  
                 </td>
             </tr>
         }
