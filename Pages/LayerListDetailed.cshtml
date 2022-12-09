@@ -1,0 +1,44 @@
+
+@page
+@model LayerListDetailedModel
+@{
+    ViewData["Title"] = "Configured Collection Layers Detail";
+}
+<h1>@ViewData["Title"]</h1>
+
+<p>Each collection layer configured for each facility.</p>
+<p></p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CollectionLayer[0].CollectionCode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CollectionLayer[0].CollectionLabel)
+            </th>
+            <th>
+                Collection Layer Details
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.CollectionLayer)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CollectionCode) @*//straight pull from CollectionLayer*@
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CollectionLabel) @*//straight pull from CollectionLayer*@
+                </td>
+                <td> @*//CYCLE THROUGH THE LINKED FacilityCollections table.*@
+                    @foreach (var collectionlayer in item.FacilityCollections!)
+                    {
+                        @collectionlayer.CollectionLayer.CollectionCode <br/>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
