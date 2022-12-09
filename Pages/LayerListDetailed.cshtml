@@ -18,7 +18,7 @@
                 @Html.DisplayNameFor(model => model.CollectionLayer[0].CollectionLabel)
             </th>
             <th>
-                Collection Layer Details
+                Facility Code
             </th>
         </tr>
     </thead>
@@ -33,9 +33,13 @@
                     @Html.DisplayFor(modelItem => item.CollectionLabel) @*//straight pull from CollectionLayer*@
                 </td>
                 <td> @*//CYCLE THROUGH THE LINKED FacilityCollections table.*@
-                    @foreach (var collectionlayer in item.FacilityCollections!)
+                    @foreach (var vCollectionLayer in item.FacilityCollections!)
                     {
-                        @collectionlayer.CollectionLayer.CollectionCode <br/>
+                        @vCollectionLayer.Facility.FacilityName <br/>
+                    }
+                    @if (item.FacilityCollections.Count == 0)
+                    {
+                        @:Unused Layer
                     }
                 </td>
             </tr>
