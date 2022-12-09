@@ -7,6 +7,24 @@
 <h1>@ViewData["Title"]</h1>
 
 <p>The Collection Layer usage for onboarded facilities.</p>
+<hr />
+<p></p>
+
+@{
+    // If we are on page 1, prevDisabled will be set to the "disabled" class
+    var prevDisabled = "";
+    if (Model.PageNum <= 1)
+    {
+        prevDisabled = "disabled";
+    }
+}
+<nav aria-label="Page navigation example">
+    <ul class="pagination">
+        <li class="page-item @prevDisabled"><a class="page-link" asp-page="LayerListBrief" asp-route-PageNum="@(Model.PageNum - 1)">Previous</a></li>
+        <li class="page-item"><a class="page-link" asp-page="LayerListBrief" asp-route-PageNum="@(Model.PageNum + 1)">Next</a></li>
+    </ul>
+</nav>
+
 <p></p>
 <table class="table">
     <thead>
